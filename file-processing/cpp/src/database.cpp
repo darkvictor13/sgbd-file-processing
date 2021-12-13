@@ -14,19 +14,16 @@ void Database::read() {
 		database_read >> size;
 		data.reserve(size);
 		while (!database_read.eof()) {
-			std::cout << "Lendo um Dado\n";
 			database_read >> temp;
 			addData(temp);
-			//std::cout << temp;
 		}
-		std::cout << "sai do read\n";
 	} 
 
 	database_read.close();
 }
 
 void Database::addData(Student &student) {
-	student.my_id = data.size() - 1;
+	student.my_id = data.size();
 	data.push_back(student);
 }
 
