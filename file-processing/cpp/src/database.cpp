@@ -23,7 +23,13 @@ void Database::read() {
 }
 
 void Database::addData(Student &student) {
+	char buffer[12];
+	time_t t = time(0);
+	strftime(buffer, 12, "%m/%d/%Y", localtime(&t));
+
 	student.my_id = data.size();
+	student.registration_date = buffer;
+
 	data.push_back(student);
 }
 

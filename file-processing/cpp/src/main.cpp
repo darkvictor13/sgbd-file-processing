@@ -40,15 +40,29 @@ int main() {
 		cout << it.first << '\n' << it.second << '\n';
 	}
 	*/
-	int x;
-	Student s, s1;
+	bool value;
+	char input;
+	Student temp;
+	Database d;
+
+	cout << "Deseja inserir um aluno? [S/n] ";
+	cin >> input;
+	cin.ignore(1, '\n');
+	value = tolower(input) != 'n';
+	while (value) {
+		cin >> temp;
+		d.addData(temp);
+		cout << "Deseja inserir novamente um aluno? [S/n] ";
+		cin >> input;
+		cin.ignore(1, '\n');
+		value = tolower(input) != 'n';
+	}
+	
 	//ifstream database_read(DATABASE_PATH);
 	//database_read >> x >> s >> s1;
 	//database_read.close();
-	Database d;
 	d.showDatabase();
-	//d.addData(s);
-	//d.write();
+	d.write();
 	//cout << s << s1;
 
 	return 0;
