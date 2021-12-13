@@ -8,11 +8,11 @@ using namespace std;
 
 //int main(int argc, char const **argv) {
 int main() {
-	string name = "Aaaaaaaaaaaa";
-	string cpf = "092.111.111-00";
-	unordered_map<uint16_t, Student> map;
-	vector<uint16_t> ids = {15, 17, 22, 664, 567, 822, 7, 904, 88, 100};
-
+	//string name = "Aaaaaaaaaaaa";
+	//string cpf = "092.111.111-00";
+	//unordered_map<uint16_t, Student> map;
+	//vector<uint16_t> ids = {15, 17, 22, 664, 567, 822, 7, 904, 88, 100};
+	/*
 	cout << "Inserindo elementos\n";
 	for (const uint16_t id : ids) {
 		map[id] = Student(name, cpf);
@@ -39,6 +39,17 @@ int main() {
 	for (const auto &it : leitura) {
 		cout << it.first << '\n' << it.second << '\n';
 	}
+	*/
+	int x;
+	Student s, s1;
+	//ifstream database_read(DATABASE_PATH);
+	//database_read >> x >> s >> s1;
+	//database_read.close();
+	Database d;
+	d.showDatabase();
+	//d.addData(s);
+	//d.write();
+	//cout << s << s1;
 
 	return 0;
 }

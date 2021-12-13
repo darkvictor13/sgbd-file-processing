@@ -5,18 +5,19 @@
 #include <string>
 #include <fstream>
 
-class Student {
-private:
-	std::string name;
-	std::string cpf;
-public:
-	Student();
-	Student(const std::string &name, const std::string &cpf);
+struct Student {
+	uint16_t my_id;
+	std::string registration_date;
+	std::string first_name;
+	std::string last_name;
+	std::string document_type;
+	std::string document;
+	std::string phone;
+	std::string email;
+	uint16_t city_id;
 
 	friend std::istream& operator >> (std::istream &input, Student &me);
 	friend std::ostream& operator << (std::ostream &output, const Student &me);
-
-	~Student();
 };
 
 #endif // STUDENT

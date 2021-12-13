@@ -6,24 +6,43 @@ Database::Database(const char *file_path) : file_path(file_path) {
 }
 
 void Database::read() {
-	uint16_t temp_id;
-	std::string temp_name, temp_cpf;
+	int size;
+	Student temp;
 	std::ifstream database_read(file_path);
 
-	while (!database_read.eof()) {
-		database_read >> temp_id >> temp_name >> temp_cpf;
-		map[temp_id] = Student(temp_name, temp_cpf);
-	}
+	if (database_read) {
+		database_read >> size;
+		data.reserve(size);
+		while (!database_read.eof()) {
+			std::cout << "Lendo um Dado\n";
+			database_read >> temp;
+			addData(temp);
+			//std::cout << temp;
+		}
+		std::cout << "sai do read\n";
+	} 
 
 	database_read.close();
 }
 
+void Database::addData(Student &student) {
+	student.my_id = data.size() - 1;
+	data.push_back(student);
+}
+
 void Database::write() {
 	std::ofstream database_write(file_path);
-	for (const auto &it : map) {
-		database_write << it.first << '\n' << it.second;
+	database_write << data.size() << '\n';
+	for (const auto &it : data) {
+		database_write << it;
 	}
 	database_write.close();
+}
+
+void Database::showDatabase() {
+	for (const auto &it : data) {
+		std::cout << it << '\n';
+	}
 }
 
 Database::~Database() {

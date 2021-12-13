@@ -1,7 +1,7 @@
 #ifndef DATABASE
 #define DATABASE
 
-#include <unordered_map>
+#include <vector>
 #include <string>
 
 #include "student.hpp"
@@ -11,16 +11,16 @@
 class Database {
 private:
 	const std::string file_path;
-	std::unordered_map<uint16_t, Student> map;
+	std::vector<Student> data;
 public:
 	Database(const char *file_path = DATABASE_PATH);
 
 	void read();
 
-	void chageData(const std::unordered_map<uint16_t, Student> &data);
-	void addData(const Student &student);
+	void addData(Student &student);
 
 	void write();
+	void showDatabase();
 
 	~Database();
 };
