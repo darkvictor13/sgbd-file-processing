@@ -25,23 +25,27 @@ def getUserInput() -> int:
 		input('Reposta inválida aperte enter para continuar')
 
 def main():
-	d = Databse(database_path)
+	databse = Databse(database_path)
 	response = getUserInput()
 	while response != 5:
 		if response == 1:
-			d.insert(Student.readFromTerminal())
+			databse.insert(Student.readFromTerminal())
 		elif response == 2:
-			d.show()
+			databse.show()
 		elif response == 3:
-			pass
+			databse.alter (
+				int(input('Entre com o id do elemento a ser alterado: ')),
+				Student.readFromTerminal()
+			)
 		elif response == 4:
-			pass
+			databse.remove(
+				int(input('Entre com o id do elemento a ser removido: '))
+			)
 
-		input('Aperte enter para continuar')
+		input('\n\nAperte enter para continuar')
 		response = getUserInput()
 
-	#s = Student.readFromTerminal()
-	d.write()
+	databse.write()
 
 if __name__ == "__main__":
 	main()

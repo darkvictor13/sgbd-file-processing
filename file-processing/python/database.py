@@ -13,30 +13,40 @@ class Databse:
 		self.read()
 
 	def read(self):
-		temp = Student()
 		file = open(self.file_path, 'r')
 
 		size = int(file.readline())
-		while temp.read(file):
-			self.data.append(temp)
+		temp = Student.read(file)
+		while 1:
+			if (temp.my_id != -1):
+				self.insert(temp)
+			else:
+				break
+			temp = Student.read(file)
 	
 	def write(self):
 		file = open(self.file_path, 'w')
+		file.write(str(len(self.data)) + '\n')
 		for it in self.data:
 			it.write(file)
 
-	def insert(self, student: Student):
+	def insert(self, student: Student) -> None:
 		student.my_id = len(self.data)
-		now = datetime.now()
-		student.registration_date = now.strftime('%m/%d/%Y')
+		if not student.registration_date:
+			now = datetime.now()
+			student.registration_date = now.strftime('%m/%d/%Y')
 		self.data.append(student)
 
 	def show(self):
 		for it in self.data:
-			print(it)
+			it.print()
 
-	def alter(self):
-		pass
+	def alter(self, id: int, student: Student):
+		student.my_id = id
+		if not student.registration_date:
+			now = datetime.now()
+			student.registration_date = now.strftime('%m/%d/%Y')
+		self.data[id] = student
 
-	def remove(self):
-		pass
+	def remove(self, id: int):
+		del self.data[id]

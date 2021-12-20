@@ -24,21 +24,23 @@ class Student:
 		s.city = input('Entre com a cidade: ')
 		return s
 
-	def read(self, file: TextIOWrapper) -> bool:
+	def read(file: TextIOWrapper):
+		s = Student()
+		s.my_id = -1
 		temp = file.readline()[:-1]
 		if (not temp):
-			return False
+			return s
 
-		self.my_id = int(temp)
-		self.registration_date = file.readline()[:-1]
-		self.first_name = file.readline()[:-1]
-		self.last_name = file.readline()[:-1]
-		self.document_type = file.readline()[:-1]
-		self.document = file.readline()[:-1]
-		self.phone = file.readline()[:-1]
-		self.email = file.readline()[:-1]
-		self.city = file.readline()[:-1]
-		return True
+		s.my_id = int(temp)
+		s.registration_date = file.readline()[:-1]
+		s.first_name = file.readline()[:-1]
+		s.last_name = file.readline()[:-1]
+		s.document_type = file.readline()[:-1]
+		s.document = file.readline()[:-1]
+		s.phone = file.readline()[:-1]
+		s.email = file.readline()[:-1]
+		s.city = file.readline()[:-1]
+		return s
 
 	def write(self, file: TextIOWrapper) -> None:
 		file.write(str(self.my_id) + '\n')
@@ -50,4 +52,17 @@ class Student:
 		file.write(self.phone + '\n')
 		file.write(self.email + '\n')
 		file.write(self.city + '\n')
+
+	def print(self):
+		print('\nStudent {')
+		print('  Id:                  {}'.format(self.my_id))
+		print('  Data de registro:    ' + self.registration_date)
+		print('  Primeiro Nome:       ' + self.first_name)
+		print('  Ultimo Nome:         ' + self.last_name)
+		print('  Tipo do documento:   ' + self.document_type)
+		print('  Numero do documento: ' + self.document)
+		print('  Numero de telefone:  ' + self.phone)
+		print('  Email:               ' + self.email)
+		print('  Nome da cidade:      ' + self.city)
+		print('}')
 
