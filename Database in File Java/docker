@@ -1,0 +1,50 @@
+# --------------------------
+# start the docker conteiner
+docker run -p 3306:3306 --name mariadb -e MARIADB_ROOT_PASSWORD=password -d mariadb
+docker exec -it mariadb /bin/bash
+
+docker run -p 3306:3306 --name mysql -e MYSQL_ROOT_PASSWORD=password -d mysql
+docker exec -it mysql /bin/bash
+
+# -------------------
+# configure data base
+
+# login
+mariadb -u root -p
+# or
+mysql -u root -p
+
+# crete a database
+CREATE DATABASE data
+
+# select the created database
+USE data
+
+# create a table
+CREATE TABLE IF NOT EXISTS data (
+    iddata INT(12) AUTO_INCREMENT,
+    studentRegistrationDate DATETIME DEFAULT CURRENT_TIMESTAMP(),
+    studentFirstName VARCHAR(256),
+    studentLastName VARCHAR(256),
+    studentDocumentType VARCHAR(256),
+    studentDocument VARCHAR(256),
+    studentPhone VARCHAR(256),
+    studentEmail VARCHAR(256),
+    studentCity VARCHAR(256),
+    PRIMARY KEY (iddata)
+);
+
+# show the created table
+SHOW tables;
+
+# show columns in the created table
+SHOW columns IN country;
+
+# show content os a table
+SELECT * FROM Country;
+
+# delete a table
+DROP TABLE Country;
+
+# exit
+EXIT;
