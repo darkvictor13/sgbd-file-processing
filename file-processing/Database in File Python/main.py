@@ -1,7 +1,7 @@
 import os
 from database import *
 
-database_path = '../cpp/build/database.txt'
+database_path = '../Database in File C++/Database-in-File/database.txt'
 
 def getUserInput() -> int:
 	os.system('clear')

@@ -31,8 +31,6 @@ FORMS += \
     remove_dialog.ui \
     select_dialog.ui
 
-TRANSLATIONS += \
-    Database-in-File_en_US.ts
 CONFIG += lrelease
 CONFIG += embed_translations
 
